@@ -1,5 +1,7 @@
 package com.github.eliefly.leetcode.s19;
 
+import com.github.eliefly.leetcode.common.ListNode;
+
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(0);

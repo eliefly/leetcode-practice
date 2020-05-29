@@ -1,5 +1,7 @@
 package com.github.eliefly.leetcode.s206;
 
+import com.github.eliefly.leetcode.common.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {

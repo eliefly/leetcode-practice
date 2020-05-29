@@ -1,5 +1,7 @@
 package com.github.eliefly.leetcode.s687;
 
+import com.github.eliefly.leetcode.common.TreeNode;
+
 class Solution {
 
     int ans = 0;

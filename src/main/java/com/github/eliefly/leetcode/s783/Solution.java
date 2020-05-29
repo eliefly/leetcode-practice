@@ -1,5 +1,7 @@
 package com.github.eliefly.leetcode.s783;
 
+import com.github.eliefly.leetcode.common.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
