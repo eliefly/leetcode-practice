@@ -19,7 +19,7 @@ class Solution {
             return null;
         }
         if (strs.length == 0) {
-            return null;
+            return "";
         }
         if (strs.length == 1) {
             return strs[0];
@@ -40,6 +40,8 @@ class Solution {
         for (int i = 0; i < length; ++i) {
             if (prefix.charAt(i) == str.charAt(i)) {
                 res.append(prefix.charAt(i));
+            } else {
+                break;
             }
         }
         return res.toString();
