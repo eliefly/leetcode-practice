@@ -3,7 +3,7 @@ package com.github.eliefly.leetcode.s14;
 class Solution {
     public static void main(String[] args) {
         String[] strings = {"flower", "flow", "flight"};
-        Solution solution = new Solution();
+        Solution2 solution = new Solution2();
         String s = solution.longestCommonPrefix(strings);
         System.out.println(s);
     }
@@ -14,7 +14,7 @@ class Solution {
      * @param strs
      * @return
      */
-/*    public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefix(String[] strs) {
         if (strs == null) {
             return null;
         }
@@ -34,31 +34,28 @@ class Solution {
         return prefix;
     }
 
+//    private String commonPrefix(String prefix, String str) {
+//        int length = Math.min(prefix.length(), str.length());
+//        StringBuilder res = new StringBuilder();
+//        for (int i = 0; i < length; ++i) {
+//            if (prefix.charAt(i) == str.charAt(i)) {
+//                res.append(prefix.charAt(i));
+//            } else {
+//                break;
+//            }
+//        }
+//        return res.toString();
+//    }
+
     private String commonPrefix(String prefix, String str) {
         int length = Math.min(prefix.length(), str.length());
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < length; ++i) {
-            if (prefix.charAt(i) == str.charAt(i)) {
-                res.append(prefix.charAt(i));
-            } else {
+        int i;
+        for (i = 0; i < length; ++i) {
+            if (prefix.charAt(i) != str.charAt(i)) {
                 break;
             }
         }
-        return res.toString();
-    }*/
-    public String longestCommonPrefix(String[] strs) {
-        if (strs.length == 0) {
-            return "";
-        }
-        String prefix = strs[0];
-        for (int i = 1; i < strs.length; i++) {
-            while (strs[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) {
-                    return "";
-                }
-            }
-        }
-        return prefix;
+        return prefix.substring(0, i);
     }
+
 }
