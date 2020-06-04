@@ -22,7 +22,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] nums = {3, 2, 4};
         int[] ints = solution.twoSum(nums, 6);
         System.out.println(Arrays.toString(ints));
