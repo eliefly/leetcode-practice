@@ -11,6 +11,12 @@ import java.util.List;
  * @date 20/6/4
  */
 public class Solution1 {
+    /**
+     * 去重
+     *
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < nums.length; ++i) {
