@@ -14,8 +14,8 @@ public class TestCase {
 
     @Test
     public void test01() {
-        int[] ints = {0, 0, 0, 0};
-        Solution solution = new Solution();
+        int[] ints = {-1, 0, 1, 2, -1, -4};
+        Solution2 solution = new Solution2();
         List<List<Integer>> lists = solution.threeSum(ints);
         System.out.println(lists);
     }
