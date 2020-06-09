@@ -2,43 +2,45 @@ package com.github.eliefly.leetcode.s61;
 
 import com.github.eliefly.leetcode.common.ListNode;
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) { val = x; }
- * }
- */
 class Solution {
+    /**
+     * 自己写的冗余
+     *
+     * @param head
+     * @param k
+     * @return
+     */
     public ListNode rotateRight(ListNode head, int k) {
         ListNode cur = head;
-        int index = 0;
+        int len = 0;
         while (cur != null) {
-            index++;
+            len++;
             cur = cur.next;
         }
-        if (index == 0) {
+        if (len == 0) {
             return head;
         }
-        k = k % index;
+        k = k % len;
         if (k == 0) {
             return head;
         }
-        index = 0;
+        k = len - k - 1;
+        int index = 0;
         cur = head;
-        ListNode mark = head;
+        ListNode newTail = head;
+        ListNode oldTail = head;
         ListNode newHead = head;
-        while (cur.next != null) {
+        while (cur != null) {
             if (index == k) {
-                mark = cur;
+                newTail = cur;
                 newHead = cur.next;
             }
             index++;
+            oldTail = cur;
             cur = cur.next;
         }
-        cur.next = head;
-        mark.next = null;
+        oldTail.next = head;
+        newTail.next = null;
         return newHead;
     }
 }
