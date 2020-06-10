@@ -11,10 +11,10 @@ import java.util.Arrays;
 public class TestCase {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] nums1 = {1, 2, 3, 0, 0, 0};
-        int[] nums2 = {2, 5, 6};
-        solution.merge(nums1, 6, nums2, 3);
+        Solution1 solution = new Solution1();
+        int[] nums1 = {0};
+        int[] nums2 = {1};
+        solution.merge(nums1, 0, nums2, 1);
 
         System.out.println(Arrays.asList(nums1).toString());
     }
