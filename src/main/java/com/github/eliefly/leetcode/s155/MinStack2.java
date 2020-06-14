@@ -13,9 +13,6 @@ public class MinStack2 {
     private Stack<Integer> data;
     private Stack<Integer> helper;
 
-    /**
-     * initialize your data structure here.
-     */
     public MinStack2() {
         this.data = new Stack<>();
         this.helper = new Stack<>();
