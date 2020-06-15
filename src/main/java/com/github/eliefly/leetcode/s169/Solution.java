@@ -8,7 +8,12 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<>();
         int res = 0;
         for (int num : nums) {
-            map.merge(num, 1, (a, b) -> a + b);
+            Integer count = map.get(num);
+            if (count == null) {
+                map.put(num, 1);
+            } else {
+                map.put(num, count + 1);
+            }
             if (map.get(num) > nums.length / 2) {
                 res = num;
                 break;
