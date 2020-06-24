@@ -15,12 +15,12 @@ class Solution {
         List<Integer> res = new ArrayList<Integer>() {{
             add(0);
         }};
-        int prfix = 1;
+        int prefix = 1;
         for (int i = 0; i < n; i++) {
             for (int j = res.size() - 1; j >= 0; j--) {
-                res.add(res.get(j) + prfix);
+                res.add(res.get(j) + prefix);
             }
-            prfix = prfix << 1;
+            prefix = prefix << 1;
         }
         return res;
     }
