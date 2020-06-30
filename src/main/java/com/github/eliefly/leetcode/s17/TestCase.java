@@ -19,4 +19,10 @@ public class TestCase {
         System.out.println(res);
     }
 
+    @Test
+    public void test02() {
+        Solution1 solution = new Solution1();
+        List<String> res = solution.letterCombinations("23");
+        System.out.println(res);
+    }
 }

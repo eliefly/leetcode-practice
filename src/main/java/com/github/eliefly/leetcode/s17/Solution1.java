@@ -17,25 +17,26 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-class Solution {
-    // 自己做的
+class Solution1 {
+
+    private List<String> res = new ArrayList<>();
+    private String[] alphabetMap = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
     public List<String> letterCombinations(String digits) {
-        List<String> oldList = new ArrayList<String>() {{
-            add("");
-        }};
-        List<String> newList = new ArrayList<>();
-        String[] alphabetMap = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        for (char digit : digits.toCharArray()) {
-            newList.clear();
-            String alphabets = alphabetMap[digit - '0'];
-            for (char apphabet : alphabets.toCharArray()) {
-                for (String s : oldList) {
-                    newList.add(s + apphabet);
-                }
-            }
-            oldList.clear();
-            oldList.addAll(newList);
+        if (digits.length() != 0) {
+            backtrack("", digits);
         }
-        return newList;
+        return res;
+    }
+
+    private void backtrack(String combination, String nextDigits) {
+        if (nextDigits.length() == 0) {
+            res.add(combination);
+            return;
+        }
+        String alphabets = alphabetMap[nextDigits.toCharArray()[0] - '0'];
+        for (char ch : alphabets.toCharArray()) {
+            backtrack(combination + ch, nextDigits.substring(1));
+        }
     }
 }
