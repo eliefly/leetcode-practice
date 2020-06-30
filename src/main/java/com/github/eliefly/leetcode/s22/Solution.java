@@ -34,32 +34,38 @@ class Solution {
 
     private void backtrack(String s, int n) {
         if (n == 0) {
-            res.add(s);
-//            for (char ch : s.toCharArray()) {
-//                if (ch == '(') {
-//                    stack.push("(");
-//                } else if (ch == ')') {
-//                    stack.pop();
-//                }
-//            }
-//            if (stack.isEmpty()) {
-//                res.add(s);
-//                stack.clear();
-//            }
+            for (char ch : s.toCharArray()) {
+                if (ch == '(') {
+                    stack.push("(");
+                } else if (ch == ')') {
+                    if (stack.isEmpty()) {
+                        return;
+                    }
+                    stack.pop();
+                }
+            }
+            if (stack.isEmpty()) {
+                res.add(s);
+            }
+            stack.clear();
+            return;
         }
-        for (char ch : s.toCharArray()) {
-            int right = 0, left = 0;
-            if (ch == '(') {
-                left++;
-            }
-            if (ch == ')') {
-                right++;
-            }
-            if (right > left || left > n - s.length()) {
-                return;
-            }
-        }
-        backtrack(s + "(", n - 1);
-        backtrack(s + ")", n - 1);
+//        for (char ch : s.toCharArray()) {
+//            int right = 0, left = 0;
+//            if (ch == '(') {
+//                left++;
+//            }
+//            if (ch == ')') {
+//                right++;
+//            }
+//            if (right > left || left > n - s.length()) {
+//                return;
+//            }
+//        }
+        s = s + "(";
+        backtrack(s, n - 1);
+        s = s.substring(0, s.length() - 1);
+        s = s + ")";
+        backtrack(s, n - 1);
     }
 }
