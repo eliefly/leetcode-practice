@@ -19,4 +19,20 @@ public class TestCase {
 
         System.out.println(list);
     }
+
+    @Test
+    public void test02() {
+        Solution1 solution = new Solution1();
+        List<String> list = solution.generateParenthesis(3);
+
+        System.out.println(list);
+    }
+
+    @Test
+    public void test03() {
+        Solution2 solution = new Solution2();
+        List<String> list = solution.generateParenthesis(3);
+
+        System.out.println(list);
+    }
 }

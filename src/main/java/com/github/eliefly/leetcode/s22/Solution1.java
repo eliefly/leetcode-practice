@@ -20,49 +20,37 @@ import java.util.List;
  * 链接：https://leetcode-cn.com/problems/generate-parentheses
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-class Solution {
+class Solution1 {
 
     private List<String> res = new ArrayList<>();
 
-    // 自己做的
     public List<String> generateParenthesis(int n) {
         backtrack("", 2 * n);
         return res;
     }
 
-    private void backtrack(String s, int n) {
-        if (n == 0) {
-            if (valid(s.toCharArray())) {
-                res.add(s);
+    // 自己做的
+    private void backtrack(String s, int k) {
+        int close = 0, open = 0;
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') {
+                open++;
             }
+            if (ch == ')') {
+                close++;
+            }
+        }
+        if (close > open || open - close > k) {
+            return;
+        }
+        if (k == 0) {
+            res.add(s);
             return;
         }
         s = s + "(";
-        backtrack(s, n - 1);
+        backtrack(s, k - 1);
         s = s.substring(0, s.length() - 1);
         s = s + ")";
-        backtrack(s, n - 1);
+        backtrack(s, k - 1);
     }
-
-    /**
-     * 判断括号有效
-     *
-     * @param current
-     * @return
-     */
-    public boolean valid(char[] current) {
-        int balance = 0;
-        for (char c : current) {
-            if (c == '(') {
-                balance++;
-            } else {
-                balance--;
-            }
-            if (balance < 0) {
-                return false;
-            }
-        }
-        return (balance == 0);
-    }
-
 }
