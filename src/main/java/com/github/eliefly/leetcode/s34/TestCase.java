@@ -20,4 +20,12 @@ public class TestCase {
         System.out.println(Arrays.toString(res));
     }
 
+    @Test
+    public void test02() {
+        Solution1 solution = new Solution1();
+        int[] nums = {5, 7, 7, 10};
+        int[] res = solution.searchRange(nums, 7);
+        System.out.println(Arrays.toString(res));
+    }
+
 }
