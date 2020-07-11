@@ -16,14 +16,44 @@ import java.util.PriorityQueue;
  * 输出: 4
  */
 class Solution2 {
+//    public int findKthLargest(int[] nums, int k) {
+//        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> a - b);
+//        for (int i = 0; i < nums.length; i++) {
+//            if (heap.size() < k || nums[i] > heap.peek()) {
+//                heap.add(nums[i]);
+//            }
+//            if (heap.size() > k) {
+//                heap.poll();
+//            }
+//        }
+//        return heap.peek();
+//    }
+
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>((o1, o2) -> o1 - o2);
-        for (int num : nums) {
-            minHeap.add(num);
-            if (minHeap.size() > k) {
-                minHeap.poll();
+        // 根据 k 大小选择使用大顶堆还是小顶堆
+        if (k < nums.length / 2) {
+            PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> a - b);
+            for (int i = 0; i < nums.length; i++) {
+                if (minHeap.size() < k || nums[i] > minHeap.peek()) {
+                    minHeap.add(nums[i]);
+                }
+                if (minHeap.size() > k) {
+                    minHeap.poll();
+                }
             }
+            return minHeap.peek();
+        } else {
+            k = nums.length - k + 1;
+            PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+            for (int i = 0; i < nums.length; i++) {
+                if (maxHeap.size() < k || nums[i] < maxHeap.peek()) {
+                    maxHeap.add(nums[i]);
+                }
+                if (maxHeap.size() > k) {
+                    maxHeap.poll();
+                }
+            }
+            return maxHeap.peek();
         }
-        return minHeap.peek();
     }
 }
