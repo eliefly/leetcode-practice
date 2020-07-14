@@ -9,7 +9,7 @@ class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) {
-            return null;
+            return res;
         }
         dfs(root, res);
         return res;
